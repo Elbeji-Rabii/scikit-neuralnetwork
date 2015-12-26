@@ -239,7 +239,7 @@ class MultiLayerPerceptronBackend(BaseBackend):
     def _predict_impl(self, X):
         if self.is_convolution():
             X = numpy.transpose(X, (0, 3, 1, 2))
-        return self.f(X)
+        return self.f(X).flatten()
     
     def _iterate_data(self, batch_size, X, y, w, shuffle=False):
         def cast(array):
